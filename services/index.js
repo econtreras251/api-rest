@@ -8,10 +8,11 @@ function createToken(user) {
   const payload = {
     sub: user._id,
     iat: moment().unix(),
-    exp: moment().add(14, 'days').unix(),
+    exp: moment().add(14, 'days').unix()
   }
+  const encoded = jwt.encode(payload, config.SECRET_TOKEN)
 
-  return jwt.encode(payload, config.SECRET_TOKEN)
+  return encoded
 }
 
 function decodeToken(token) {
